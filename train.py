@@ -1,6 +1,6 @@
 import torch
 # from trainer.mlm_head_trainer import Trainer
-from Trainer.base_trainer import Trainer
+from trainer.base_trainer import Trainer
 from utils.dataloader import CreateDataset
 import pandas as pd
 import gc

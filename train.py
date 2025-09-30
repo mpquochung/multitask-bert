@@ -38,10 +38,10 @@ for task in tasks:
       test_set  = pd.read_csv(r'dataset\VSFC_benchmark\original_VSFC\test.csv')
       val_set = pd.reasd_csv(r'dataset\VSFC_benchmark\original_VSFC\val.csv')
     else:
-      train_set = pd.read_csv('dataset/VSFC_benchmark/original_VSFC/train_neu.csv')
-      test_set  = pd.read_csv('dataset/VSFC_benchmark/original_VSFC/test.csv')
-      val_set = pd.read_csv('dataset/VSFC_benchmark/original_VSFC/val.csv')
-        
+      train_set = pd.read_csv('dataset/vhsd_benchmark/train.csv')
+      test_set  = pd.read_csv('dataset/vhsd_benchmark/test_combined.csv')
+      val_set = pd.read_csv('dataset/vhsd_benchmark/val_combined.csv')
+
     train_data_loader = CreateDataset(train_set['text'], train_set['sentiment'],train_set['classification'], bert_name, batch_size=batch_size).todataloader()
     test_data_loader  = CreateDataset(test_set['text'], test_set['sentiment'],test_set['classification'], bert_name, batch_size=batch_size).todataloader()
     val_data_loader  = CreateDataset(val_set['text'], val_set['sentiment'],val_set['classification'], bert_name, batch_size=batch_size).todataloader()

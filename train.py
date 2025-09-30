@@ -36,11 +36,11 @@ for task in tasks:
     if 'vinai' in bert_name:
       train_set = pd.read_csv(r'dataset\VSFC_benchmark\original_VSFC\train.csv')
       test_set  = pd.read_csv(r'dataset\VSFC_benchmark\original_VSFC\test.csv')
-      val_set = pd.read_csv(r'dataset\VSFC_benchmark\original_VSFC\val.csv')
+      val_set = pd.reasd_csv(r'dataset\VSFC_benchmark\original_VSFC\val.csv')
     else:
-      train_set = pd.read_csv(r'dataset\VSFC_benchmark\original_VSFC\train.csv')
-      test_set  = pd.read_csv(r'dataset\VSFC_benchmark\original_VSFC\test.csv')
-      val_set = pd.read_csv(r'dataset\VSFC_benchmark\original_VSFC\val.csv')
+      train_set = pd.read_csv(r'./dataset\VSFC_benchmark\original_VSFC\train.csv')
+      test_set  = pd.read_csv(r'./dataset\VSFC_benchmark\original_VSFC\test.csv')
+      val_set = pd.read_csv(r'./dataset\VSFC_benchmark\original_VSFC\val.csv')
         
     train_data_loader = CreateDataset(train_set['text'], train_set['sentiment'],train_set['classification'], bert_name, batch_size=batch_size).todataloader()
     test_data_loader  = CreateDataset(test_set['text'], test_set['sentiment'],test_set['classification'], bert_name, batch_size=batch_size).todataloader()

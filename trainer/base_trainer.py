@@ -1,3 +1,9 @@
+import os
+os.environ["USE_TF"] = "0"
+os.environ["USE_FLAX"] = "0"
+
+from transformers import AutoModelForSequenceClassification
+
 import torch
 from transformers import AutoModelForSequenceClassification
 import numpy as np

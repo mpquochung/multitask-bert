@@ -1,6 +1,6 @@
 import torch
 # from trainer.mlm_head_trainer import Trainer
-from trainer.base_trainer import Trainer
+from Trainer.base_trainer import Trainer
 from utils.dataloader import CreateDataset
 import pandas as pd
 import gc
@@ -12,13 +12,13 @@ import gc
 
 architectures=["linear"]
 
-bert_names=["google-bert/bert-base-multilingual-uncased", "FPTAI/velectra-base-discriminator-cased"]
-# bert_names=["vinai/phobert-base-v2", "xlm-roberta-base",'uitnlp/visobert']
+# bert_names=["google-bert/bert-base-multilingual-uncased", "FPTAI/velectra-base-discriminator-cased"]
+bert_names=['uitnlp/visobert']
 
 
 
 is_smart = True
-tasks = ['sentiment', 'classification']
+tasks = ['sentiment']
 
 for task in tasks:
   for bert_name in bert_names :
@@ -34,13 +34,13 @@ for task in tasks:
     
 
     if 'vinai' in bert_name:
-      train_set = pd.read_csv('dataset/train_set_processed.csv')
-      test_set  = pd.read_csv('dataset/test_set_processed.csv')
-      val_set = pd.read_csv('dataset/val_set_processed.csv')
+      train_set = pd.read_csv(r'dataset\VSFC_benchmark\original_VSFC\train.csv')
+      test_set  = pd.read_csv(r'dataset\VSFC_benchmark\original_VSFC\test.csv')
+      val_set = pd.read_csv(r'dataset\VSFC_benchmark\original_VSFC\val.csv')
     else:
-        train_set = pd.read_csv('dataset/train_set.csv')
-        test_set  = pd.read_csv('dataset/test_set.csv')
-        val_set = pd.read_csv('dataset/val_set.csv')
+      train_set = pd.read_csv(r'dataset\VSFC_benchmark\original_VSFC\train.csv')
+      test_set  = pd.read_csv(r'dataset\VSFC_benchmark\original_VSFC\test.csv')
+      val_set = pd.read_csv(r'dataset\VSFC_benchmark\original_VSFC\val.csv')
         
     train_data_loader = CreateDataset(train_set['text'], train_set['sentiment'],train_set['classification'], bert_name, batch_size=batch_size).todataloader()
     test_data_loader  = CreateDataset(test_set['text'], test_set['sentiment'],test_set['classification'], bert_name, batch_size=batch_size).todataloader()
